@@ -9,6 +9,11 @@ public class Wallet {
     Printer printer = new Printer();
 
 
+    public void play() {
+        Main.currency -= getBetSize();
+    }
+
+
     public void win() {
         this.betSize =  getBetSize();
         int winnings = betSize * 2;
@@ -29,7 +34,7 @@ public class Wallet {
     }
     
     public void lose() {
-        setCurrency(Main.currency - betSize);
+        this.betSize = getBetSize();
         System.out.println("You lost $" + betSize + ", so your total currency is now at $" + Main.currency);
     }
     

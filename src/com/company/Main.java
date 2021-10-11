@@ -58,6 +58,8 @@ public class Main {
         Wallet wallet = new Wallet();
 
 
-        wallet.win();
+        wallet.play();
+
+        wallet.lose();
     }
 }
