@@ -12,7 +12,7 @@ public class Main {
 
 
     public static int currency = 500;
-
+    public static int betSize;
 
 
     public static void main(String[] arg) {

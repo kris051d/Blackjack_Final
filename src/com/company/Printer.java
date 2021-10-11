@@ -37,6 +37,19 @@ public class Printer {
 
     }
 
+    public void congratulations() {
+
+        System.out.println("   _____                                  _           _         _    _                     _ ");
+        System.out.println("  / ____|                                | |         | |       | |  (_)                   | |");
+        System.out.println(" | |      ___   _ __    __ _  _ __  __ _ | |_  _   _ | |  __ _ | |_  _   ___   _ __   ___ | |");
+        System.out.println(" | |     / _ \\ | '_ \\  / _` || '__|/ _` || __|| | | || | / _` || __|| | / _ \\ | '_ \\ / __|| |");
+        System.out.println(" | |____| (_) || | | || (_| || |  | (_| || |_ | |_| || || (_| || |_ | || (_) || | | |\\__ \\|_|");
+        System.out.println("  \\_____|\\___/ |_| |_| \\__, ||_|   \\__,_| \\__| \\__,_||_| \\__,_| \\__||_| \\___/ |_| |_||___/(_)");
+        System.out.println("                        __/ |                                                                ");
+        System.out.println("                       |___/                                                                 ");
+
+    }
+
 
 
 
