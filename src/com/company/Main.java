@@ -30,7 +30,7 @@ public class Main {
             } else if (betSize > currency) {
                 System.err.println("You do not have that amount of currency.");
             } else {
-                System.err.println("You need to bet a positive number");
+                System.err.println("You need to bet a whole positive number");
             }
         }
 
