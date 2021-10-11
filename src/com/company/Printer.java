@@ -33,8 +33,6 @@ public class Printer {
             System.out.println();
         }
 
-
-
     }
 
     public void congratulations() {
