@@ -7,15 +7,24 @@ import java.util.Scanner;
 
 public class Main {
 
+
+
+
+
     public static int currency = 500;
 
 
 
     public static void main(String[] arg) {
-        int betSize = 0;
+        Printer print = new Printer();
+
+
         Scanner in = new Scanner(System.in);
 
-        System.out.println("Welcome to Blackjack!\n" + "You have $" +  currency + ", how much would you like to bet?");
+
+        print.startGame();
+
+
 
         while(!in.hasNextInt()) {
             System.err.println("Not a valid number");
@@ -46,9 +55,9 @@ public class Main {
 
 
 
-       /* List<Integer> mylist = new ArrayList<Integer>();
+        Wallet wallet = new Wallet();
 
-        System.out.println(mylist);*/
 
+        wallet.win();
     }
 }

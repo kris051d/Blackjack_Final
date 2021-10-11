@@ -40,22 +40,22 @@ public class Card {
     public void setFace(int value) {
 
         switch (value) {
-            case 1:
+            case 1 -> {
                 this.face = "Ace";
                 isAce = true;
-                break;
-            case 11:
+            }
+            case 11 -> {
                 this.face = "Jack";
                 setValue(10);
-                break;
-            case 12:
-                this.face ="Queen";
+            }
+            case 12 -> {
+                this.face = "Queen";
                 setValue(10);
-                break;
-            case 13:
+            }
+            case 13 -> {
                 this.face = "King";
                 setValue(10);
-                break;
+            }
         }
 
     }
