@@ -2,9 +2,6 @@ package com.company;
 
 public class Wallet {
     public int currency;
-
-
-
     public int betSize;
     Printer printer = new Printer();
 
