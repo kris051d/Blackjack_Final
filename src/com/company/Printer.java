@@ -268,8 +268,34 @@ public class Printer {
         System.out.println("\nYou won $" + (Main.betSize * 2) + " your new balance is $" + (Main.betSize + Main.currency) + ".");
     }
 
+    public void lose() {
+        //sejt statement
+        System.out.println("\nYou lost $" + (Main.betSize) + " your new balance is $" + (Main.currency) + ".");
+    }
 
+    public void tie() {
+        //sejt statement
+        System.out.println("It was a draw your bet of $" + (Main.betSize) + " has been returned to your wallet and your new balance is $" + (Main.currency + Main.betSize) + ".");
+    }
 
+    public void status() {
 
+        // Change the bets and currency so they fit with the entire game.
+
+        int bet = 1;
+        int current = 500;
+        String empty = "|                                                                                |";
+        String space = " ";
+
+        System.out.println("+--------------------------------------------------------------------------------+");
+        System.out.println(empty);
+        System.out.println(empty);
+        System.out.println("|                         Current bet:\t\t\t$" + bet + (space.repeat(32 - String.valueOf(bet).length())) + "|");
+        System.out.println(empty);
+        System.out.println("|                         Total amount:\t\t\t$" + current + (space.repeat(32 - String.valueOf(current).length())) + "|");
+        System.out.println(empty);
+        System.out.println(empty);
+        System.out.println("+--------------------------------------------------------------------------------+");
+    }
 
 }
