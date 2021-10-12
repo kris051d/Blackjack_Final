@@ -1,8 +1,8 @@
 package com.company;
 
 public class Wallet {
-    public int currency;
-    public int betSize;
+    private int currency;
+    private int betSize;
     Printer printer = new Printer();
 
 

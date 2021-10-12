@@ -1,8 +1,6 @@
 package com.company;
 
-import java.util.ArrayList;
-import java.lang.Integer;
-import java.util.List;
+
 import java.util.Scanner;
 
 public class Main {
@@ -11,27 +9,32 @@ public class Main {
 
 
 
+    public static  String name;
+
     public static int currency = 500;
     public static int betSize;
 
 
     public static void main(String[] arg) {
+
+        name = "Marc";
+
         Printer print = new Printer();
-
-
         Scanner in = new Scanner(System.in);
+
 
 
         print.startGame();
 
 
 
-        while(!in.hasNextInt()) {
+
+        while (!in.hasNextInt()) {
             System.err.println("Not a valid number");
             in.next();
         }
 
-        while (in.hasNextInt()) {
+        while(true) {
             betSize = in.nextInt();
             if (betSize <= currency && betSize > 0) {
                 System.out.println("Bet size is now $" + betSize + "\nDealing...");
@@ -41,25 +44,22 @@ public class Main {
             } else {
                 System.err.println("You need to bet a whole positive number");
             }
+        in.next();
         }
 
-
-
-
-
-
-
-        Card card = new Card();
-        card.makeCard(6, "Heart");
-        System.out.println(card.getFace() + " Hello");
-
-
-
+        Dealer dealer = new Dealer();
         Wallet wallet = new Wallet();
 
 
         wallet.play();
 
-        wallet.lose();
+        dealer.generateDeck();
+        dealer.startDeal();
+
+
+
+
+
+
     }
 }
