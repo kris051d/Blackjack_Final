@@ -3,6 +3,7 @@ package com.company;
 
 import java.util.Scanner;
 import java.util.ArrayList;
+import java.util.concurrent.TimeUnit;
 
 public class Dealer {
 
@@ -15,9 +16,13 @@ public class Dealer {
     private boolean gameOver = false;
     private boolean canSplit = false;
     private boolean canDoubleDown = false;
-    private boolean hasDoubleDown = false;
-    private boolean playerHasStopped = false;
+    public static boolean playerHasStopped = false;
     private boolean dealerHasStopped = false;
+    private int gamesWithoutShuffel = 0;
+    private int input;
+    private boolean playerWon;
+    private boolean itsATie;
+    private boolean playerLost;
 
 
 
@@ -52,47 +57,59 @@ public class Dealer {
     public void startDeal() {
 
 
-        player.add(deck.deck.get(0));
-        deck.deck.remove(0);
+        playerHasStopped = false;
+        player.clear();
+        dealer.clear();
+        canDoubleDown = true;
+        playerWon = false;
+        gameOver = false;
+        itsATie = false;
+        playerLost = false;
 
-        dealer.add(deck.deck.get(0));
-        deck.deck.remove(0);
+        totalDealerValue = 0;
+        totalPlayerValue = 0;
 
-        player.add(deck.deck.get(0));
-        deck.deck.remove(0);
-
-        dealer.add(deck.deck.get(0));
-        deck.deck.remove(0);
-
-
-        System.out.println("Player card 1: " + player.get(0).value + " of " + player.get(0).suit + " " +  player.get(0).face );
-
-        System.out.println("Player card 2: " + player.get(1).value + " of " + player.get(1).suit + " " +  player.get(1).face );
-
-        System.out.println("Dealer card 1: " + dealer.get(0).value + " of " + dealer.get(0).suit  + " " +  dealer.get(0).face);
-
-        System.out.println("Dealer card 2: is hidden");
-
-        for (Card card : player) {
-            print.printCard(card , player);
+        if (Main.currency < Main.betSize) {
+            canDoubleDown = false;
         }
-        print.printCard(dealer.get(0) , dealer );
-
-        print.blankCard();
 
 
 
+        player.add(deck.deck.get(0));
+        deck.deck.remove(0);
+
+        dealer.add(deck.deck.get(0));
+        deck.deck.remove(0);
+
+        player.add(deck.deck.get(0));
+        deck.deck.remove(0);
+
+        dealer.add(deck.deck.get(0));
+        deck.deck.remove(0);
 
 
-        checkPoints();
-
-        print.gamePlay();
-
-
-        gamePlay();
 
 
 
+
+
+        updateCardValue();
+
+        System.out.println(totalPlayerValue);
+        if (totalPlayerValue == 21) {
+            playerHasStopped = true;
+            updateCardValue();
+            if (totalDealerValue < 17) {
+                dealerDraw();
+            } else {
+                updateUI();
+            }
+        } else {
+
+            updateUI();
+
+            gamePlay();
+        }
     }
 
 
@@ -103,19 +120,28 @@ public class Dealer {
         Scanner in = new Scanner(System.in);
 
 
+
         // (1) = hit / (2) = stand / (3) = double down / (4) split
 
-        while (!gameOver) {
 
 
-            while (!in.hasNextInt()) {
-                System.err.println("Input must be a number showed on the screen!");
-                in.next();
-            }
 
-            int input = in.nextInt();
+            while (!gameOver) {
+
 
             while (true) {
+
+
+                while (!in.hasNextInt()) {
+                    System.err.println("Input must be a number showed on the screen!");
+
+                    in.next();
+                }
+
+                input = in.nextInt();
+
+
+
                 if (input == 1) {
                     break;
                 }
@@ -133,8 +159,7 @@ public class Dealer {
                     System.err.println("You don't have the cards needed to split");
                 }
                 System.err.println("That's not a valid number");
-                in.next();
-            }
+                }
 
 
             switch (input) {
@@ -142,13 +167,25 @@ public class Dealer {
                     player.add(deck.deck.get(0));
                     deck.deck.remove(0);
 
-                    print.printCard(player.get(player.size() - 1) , player);
+                    canDoubleDown = false;
+
+                    checkPoints();
+
+                    if (totalPlayerValue == 21 || player.size() == 5 ) {
+
+                        break;
+
+                    }
+
+                        updateUI();
+
+
 
 
                     // Print updated player UI
 
 
-                    checkPoints();
+
                     break;
                 case 2:
                     // Stand
@@ -160,104 +197,123 @@ public class Dealer {
 
                 break;
 
-/*
+
                 case 3:
                     // Double down
                     player.add(deck.deck.get(0));
+                    deck.deck.remove(0);
 
+                    Main.currency -=  Main.betSize ;
 
+                    Main.betSize *= 2;
 
-                case 4:
-                    // Split
-*/
+                    playerHasStopped = true;
+
+                    dealerDraw();
+
+                    break;
             }
 
 
         }
+
+
+
+
+
 
     }
 
 
     private void checkPoints() {
 
-        updateCardValue();
+            if (!gameOver) {
 
-
-        if (totalPlayerValue < 21 && !playerHasStopped) {
-            System.out.println("Your total value is " + totalPlayerValue);
+            updateCardValue();
 
 
 
-            System.out.println("What would you like to do now?");
-            System.out.println("(1) = hit / (2) = stand");
+            if  (totalPlayerValue > 21) {
+                playerLost = true;
+                gameOver = true;
+            }
+             else if (totalDealerValue > 21) {
+                playerWon = true;
+                gameOver = true;
+            }
+                else if (totalPlayerValue == totalDealerValue && playerHasStopped && totalDealerValue > 16 && player.size() != 5){
+                itsATie = true;
+                gameOver = true;
+            }
+            else if (totalPlayerValue > totalDealerValue && playerHasStopped && totalDealerValue > 16) {
+                playerWon = true;
+                 gameOver = true;
+            }
+            else if (totalPlayerValue == 21  && totalDealerValue < 17 && !playerHasStopped) {
+                playerHasStopped = true;
+                dealerDraw();
+            }
+            else   if (totalPlayerValue < totalDealerValue && totalDealerValue > 16 && player.size() != 5) {
+                playerLost = true;
+                 gameOver = true;
+            }
+            else  if (player.size() == 5 && totalDealerValue > 16 && totalDealerValue != 21) {
+                playerWon = true;
+                 gameOver = true;
+            }
+            else  if (player.size() == 5 && totalDealerValue == 21) {
+                playerLost = true;
+                gameOver = true;
+            }
+            else if (player.size() == 5 && !playerHasStopped ) {
+                playerHasStopped = true;
+                dealerDraw();
+            }
         }
-
-        if (totalPlayerValue > 21) {
-            print.lose();
-        }
-
-        else if (totalDealerValue > 21) {
-            print.win();
-        }
-
-        else if (totalPlayerValue == totalDealerValue && playerHasStopped && totalPlayerValue <= 21){
-            print.tie();
-        }
-
-        else if (totalPlayerValue == 21 && !dealerHasStopped) {
-            playerHasStopped = true;
-            dealerDraw();
-        }
-
-        else if (totalPlayerValue <= 21 && totalDealerValue > 21) {
-            print.win();
-        }
-        else if (totalPlayerValue < totalDealerValue && playerHasStopped && dealerHasStopped ) {
-            print.lose();
-        }
-
-        else if (totalPlayerValue == 21 && dealerHasStopped && playerHasStopped && totalDealerValue != 21) {
-            print.win();
-        }
-
-
-
-
 
     }
 
+    public void dealerDraw()   {
 
-    public void dealerDraw() {
-        updateCardValue();
+        checkPoints();
 
-
-
-
-
-        System.out.println("Dealer draws?");
-
-        System.out.println("hidden card is:");
-        print.printCard(dealer.get(1) , dealer);
+        updateUI();
 
 
-        System.out.println("dealer total is " + totalDealerValue);
+        try {
+            TimeUnit.SECONDS.sleep(2);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+
+
         // dealer values is under 16 and the value of the dealer is smaller than the player
         while (totalDealerValue < 17 && totalDealerValue < totalPlayerValue) {
 
             dealer.add(deck.deck.get(0));
             deck.deck.remove(0);
 
-            print.printCard(dealer.get(dealer.size() - 1) , dealer);
+            checkPoints();
 
-            updateCardValue();
+            updateUI();
 
-            System.out.println("Dealer total is:  " + totalDealerValue);
-            System.out.println("Your total is: " + totalPlayerValue);
+
+            try {
+                TimeUnit.SECONDS.sleep(2);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
 
         }
 
         dealerHasStopped = true;
-        checkPoints();
+
+        if (!gameOver) {
+            checkPoints();
+            updateUI();
+
+        }
 
     }
 
@@ -267,30 +323,64 @@ public class Dealer {
         totalPlayerValue = 0;
 
 
-        for (Card  card : player ){
+        for (Card card : player) {
             totalPlayerValue += card.value;
         }
-        for (Card  card : player ){
-            if (totalPlayerValue <= 11 && card.isAce) {
-                totalPlayerValue += 10;
+        for (Card card : player) {
+            if (totalPlayerValue > 21) {
+                if (card.isAce()) {
+                    totalPlayerValue -= 10;
+                }
             }
         }
+
+
+
 
         for (Card  card : dealer ){
             if (playerHasStopped) {
-
-            totalDealerValue += card.value;} else {
+            totalDealerValue += card.value;
+            }  else {
                 totalDealerValue = dealer.get(0).value;
             }
-
         }
-        for (Card  card : dealer ){
-            if (totalDealerValue <= 11 && card.isAce) {
-                totalDealerValue += 10;
+        if (playerHasStopped) {
+            for (Card card : dealer) {
+                if (totalDealerValue > 21) {
+                    if (card.isAce()) {
+                        totalDealerValue -= 10;
+                    }
+                }
             }
         }
 
+
     }
+
+        private void updateUI() {
+
+        Printer print = new Printer();
+
+            for (Card card : player) {
+                print.printCard(card , player);
+            }
+            if (!playerHasStopped) {
+                print.printCard(dealer.get(0) , dealer );
+                print.blankCard();
+            } else {
+                for (Card card : dealer) {
+                    print.printCard(card, dealer);
+                }
+            }
+
+
+            print.status(Main.betSize, Main.currency, canDoubleDown , playerWon , itsATie, playerLost);
+
+
+
+            print.gamePlay( totalPlayerValue , totalDealerValue , playerWon , itsATie , playerLost);
+
+        }
 
 
 }

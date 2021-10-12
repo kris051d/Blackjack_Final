@@ -21,45 +21,74 @@ public class Main {
 
         Printer print = new Printer();
         Scanner in = new Scanner(System.in);
+        Dealer dealer = new Dealer();
+        Wallet wallet = new Wallet();
+
 
 
 
         print.startGame();
 
+        while (true) {
+
+            outLoop:
+            while (gameIsRunning) {
 
 
+                while (true) {
 
-        while (!in.hasNextInt()) {
-            System.err.println("Not a valid number");
-            in.next();
-        }
 
-        while(true) {
-            betSize = in.nextInt();
-            if (betSize <= currency && betSize > 0) {
-                System.out.println("Bet size is now $" + betSize + "\nDealing...");
-                break;
-            } else if (betSize > currency) {
-                System.err.println("You do not have that amount of currency.");
-            } else {
-                System.err.println("You need to bet a whole positive number");
+                    String input = in.next();
+
+
+                    if (input.toLowerCase(Locale.ROOT).equals("exit")) {
+                        System.out.println("Exiting Blackjack");
+                        System.exit(0);
+                    }
+
+                    try {
+
+                        betSize = Integer.parseInt(input);
+
+                    } catch (Exception e) {
+                        System.err.println("That is not a valid number or \"Exit\" ");
+                        break outLoop;
+                    }
+
+
+                    if (betSize <= currency && betSize > 0) {
+                        System.out.println("Bet size is now $" + betSize + "\nDealing...");
+                        break;
+                    } else if (betSize > currency) {
+                        System.err.println("You do not have that amount of currency.");
+                    } else {
+                        System.err.println("You need to bet a whole positive number");
+                    }
+
+                }
+
+
+                wallet.play();
+
+                dealer.generateDeck();
+                dealer.startDeal();
+
+
+                if (currency == 0) {
+
+
+                    try {
+                        TimeUnit.SECONDS.sleep(1);
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+
+                    print.gameOver();
+                    System.exit(0);
+                }
+
             }
-        in.next();
+
         }
-
-        Dealer dealer = new Dealer();
-        Wallet wallet = new Wallet();
-
-
-        wallet.play();
-
-        dealer.generateDeck();
-        dealer.startDeal();
-
-
-
-
-
-
     }
 }

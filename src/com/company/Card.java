@@ -43,6 +43,7 @@ public class Card {
             case 1 -> {
                 this.face = "Ace";
                 isAce = true;
+                setValue(11);
             }
             case 11 -> {
                 this.face = "Jack";

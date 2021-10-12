@@ -45,7 +45,9 @@ public class Wallet {
 
 
     public void draw(){
-
+        this.betSize = getBetSize();
+        Main.currency = setCurrency(betSize);
+        System.out.println("You Won $" + betSize + ", so your total currency is now at $" + Main.currency);
         }
 
     public int setCurrency(int v) {

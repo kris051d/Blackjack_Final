@@ -5,9 +5,13 @@ import java.util.ArrayList;
 public class Printer {
 
 
+    ArrayList<String> status = new ArrayList<>();
+
     ArrayList<String> gameScreen = new ArrayList<>();
 
     ArrayList<StringBuilder> cardGamePlay = new ArrayList<>();
+
+    ArrayList<StringBuilder> options = new ArrayList<>();
 
     public void startGame() {
 
@@ -33,29 +37,34 @@ public class Printer {
             System.out.println();
         }
 
+        rules();
+
         System.out.println("                                                                                                     You have " + Main.currency + "$");
         System.out.println("                                                                                         Type how much you would like to bet");
 
-        for (int i = 0; i < 25; i++) {
+        for (int i = 0; i < 5; i++) {
             System.out.println();
         }
 
     }
 
+
+
     public void congratulations() {
 
-        System.out.println("  ______                                                     __                __             __      __                                __ ");
-        System.out.println(" /      \\                                                   |  \\              |  \\           |  \\    |  \\                              |  \\");
-        System.out.println("|  $$$$$$\\  ______   _______    ______    ______   ______  _| $$_    __    __ | $$  ______  _| $$_    \\$$  ______   _______    _______ | $$");
-        System.out.println("| $$   \\$$ /      \\ |       \\  /      \\  /      \\ |      \\|   $$ \\  |  \\  |  \\| $$ |      \\|   $$ \\  |  \\ /      \\ |       \\  /       \\| $$");
-        System.out.println("| $$      |  $$$$$$\\| $$$$$$$\\|  $$$$$$\\|  $$$$$$\\ \\$$$$$$\\\\$$$$$$  | $$  | $$| $$  \\$$$$$$\\\\$$$$$$  | $$|  $$$$$$\\| $$$$$$$\\|  $$$$$$$| $$");
-        System.out.println("| $$   __ | $$  | $$| $$  | $$| $$  | $$| $$   \\$$/      $$ | $$ __ | $$  | $$| $$ /      $$ | $$ __ | $$| $$  | $$| $$  | $$ \\$$    \\  \\$$");
-        System.out.println("| $$__/  \\| $$__/ $$| $$  | $$| $$__| $$| $$     |  $$$$$$$ | $$|  \\| $$__/ $$| $$|  $$$$$$$ | $$|  \\| $$| $$__/ $$| $$  | $$ _\\$$$$$$\\ __ ");
-        System.out.println(" \\$$    $$ \\$$    $$| $$  | $$ \\$$    $$| $$      \\$$    $$  \\$$  $$ \\$$    $$| $$ \\$$    $$  \\$$  $$| $$ \\$$    $$| $$  | $$|       $$|  \\");
-        System.out.println("  \\$$$$$$   \\$$$$$$  \\$$   \\$$ _\\$$$$$$$ \\$$       \\$$$$$$$   \\$$$$   \\$$$$$$  \\$$  \\$$$$$$$   \\$$$$  \\$$  \\$$$$$$  \\$$   \\$$ \\$$$$$$$  \\$$");
-        System.out.println("                              |  \\__| $$                                                                                                   ");
-        System.out.println("                               \\$$    $$                                                                                                   ");
-        System.out.println("                                \\$$$$$$                                                                                                    ");
+
+        status.add("\t\t\t\t\t\t\t\t\t\t  ______                                                     __                __             __      __                                __ ");
+        status.add("\t\t\t\t\t\t\t\t\t\t /      \\                                                   |  \\              |  \\           |  \\    |  \\                              |  \\");
+        status.add("\t\t\t\t\t\t\t\t\t\t|  $$$$$$\\  ______   _______    ______    ______   ______  _| $$_    __    __ | $$  ______  _| $$_    \\$$  ______   _______    _______ | $$");
+        status.add("\t\t\t\t\t\t\t\t\t\t| $$   \\$$ /      \\ |       \\  /      \\  /      \\ |      \\|   $$ \\  |  \\  |  \\| $$ |      \\|   $$ \\  |  \\ /      \\ |       \\  /       \\| $$");
+        status.add("\t\t\t\t\t\t\t\t\t\t| $$      |  $$$$$$\\| $$$$$$$\\|  $$$$$$\\|  $$$$$$\\ \\$$$$$$\\\\$$$$$$  | $$  | $$| $$  \\$$$$$$\\\\$$$$$$  | $$|  $$$$$$\\| $$$$$$$\\|  $$$$$$$| $$");
+        status.add("\t\t\t\t\t\t\t\t\t\t| $$   __ | $$  | $$| $$  | $$| $$  | $$| $$   \\$$/      $$ | $$ __ | $$  | $$| $$ /      $$ | $$ __ | $$| $$  | $$| $$  | $$ \\$$    \\  \\$$");
+        status.add("\t\t\t\t\t\t\t\t\t\t| $$__/  \\| $$__/ $$| $$  | $$| $$__| $$| $$     |  $$$$$$$ | $$|  \\| $$__/ $$| $$|  $$$$$$$ | $$|  \\| $$| $$__/ $$| $$  | $$ _\\$$$$$$\\ __ ");
+        status.add("\t\t\t\t\t\t\t\t\t\t \\$$    $$ \\$$    $$| $$  | $$ \\$$    $$| $$      \\$$    $$  \\$$  $$ \\$$    $$| $$ \\$$    $$  \\$$  $$| $$ \\$$    $$| $$  | $$|       $$|  \\");
+        status.add("\t\t\t\t\t\t\t\t\t\t  \\$$$$$$   \\$$$$$$  \\$$   \\$$ _\\$$$$$$$ \\$$       \\$$$$$$$   \\$$$$   \\$$$$$$  \\$$  \\$$$$$$$   \\$$$$  \\$$  \\$$$$$$  \\$$   \\$$ \\$$$$$$$  \\$$");
+        status.add("\t\t\t\t\t\t\t\t\t\t                              |  \\__| $$                                                                                                   ");
+        status.add("\t\t\t\t\t\t\t\t\t\t                               \\$$    $$                                                                                                   ");
+        status.add("\t\t\t\t\t\t\t\t\t\t                                \\$$$$$$                                                                                                    ");
 
     }
 
@@ -101,12 +110,14 @@ public class Printer {
         int numberOfPlayerCards =  player.size();
 
         switch (numberOfPlayerCards) {
-            case 2 -> spaceSize = "\t\t\t\t\t\t\t\t     ";
-            case 3 -> spaceSize = "\t\t\t\t\t\t";
+            case 2 -> spaceSize = "\t\t\t\t\t\t\t\t   ";
+            case 3 -> spaceSize = "\t\t\t\t\t      ";
+            case 4 -> spaceSize = "\t\t\t\t";
+            case 5 -> spaceSize = "\t  ";
         }
 
 
-        if (cardGamePlay.size() == 0) {
+        if (cardGamePlay.size() == 0 && player.get(0) == card) {
 
             cardGamePlay.add(new StringBuilder(spaceSize)); // 0
             cardGamePlay.add(new StringBuilder(spaceSize)); // 1
@@ -118,6 +129,10 @@ public class Printer {
             cardGamePlay.add(new StringBuilder(spaceSize)); // 7
             cardGamePlay.add(new StringBuilder(spaceSize)); // 8
             cardGamePlay.add(new StringBuilder(spaceSize)); // 9
+        } else if (player.get(0) == card) {
+            for (int i = 0; i < 10; i++) {
+                cardGamePlay.get(i).append("  ").append(spaceSize);
+            }
         }
 
 
@@ -140,7 +155,15 @@ public class Printer {
             }
 
             for (int i = 0; i < 10; i++) {
-                cardGamePlay.get(i).append(" |");
+                if (numberOfPlayerCards == 3) {
+                cardGamePlay.get(i).append("    |");
+            }   else if (numberOfPlayerCards == 2) {
+                cardGamePlay.get(i).append("   |");
+            }else if (numberOfPlayerCards == 4) {
+                    cardGamePlay.get(i).append("  |");
+                } else {
+                    cardGamePlay.get(i).append("    |");
+                }
             }
         }
 
@@ -160,31 +183,22 @@ public class Printer {
 
 
     public void blankCard() {
- /*       System.out.println(" ___________ ");
-        System.out.println("/           \\");
-        System.out.println("| /  /  /  /|");
-        System.out.println("|/  /  /  / |");
-        System.out.println("|  /  /  /  |");
-        System.out.println("| /  /  /  /|");
-        System.out.println("|/  /  /  / |");
-        System.out.println("|  /  /  /  |");
-        System.out.println("| /  /  /  /|");
-        System.out.println("\\___________/");
-*/
-        System.out.println(" ___________ ");
-        System.out.println("/   _---_   \\");
-        System.out.println("|  /     \\  |");
-        System.out.println("|  \\     /  |");
-        System.out.println("|       /   |");
-        System.out.println("|      |    |");
-        System.out.println("|      |    |");
-        System.out.println("|      |    |");
-        System.out.println("|      *    |");
-        System.out.println("\\___________/");
+        cardGamePlay.get(0).append( " ___________ ");
+        cardGamePlay.get(1).append("/           \\");
+        cardGamePlay.get(2).append("| /  /  /  /|");
+        cardGamePlay.get(3).append("|/  /  /  / |");
+        cardGamePlay.get(4).append("|  /  /  /  |");
+        cardGamePlay.get(5).append("| /  /  /  /|");
+        cardGamePlay.get(6).append("|/  /  /  / |");
+        cardGamePlay.get(7).append("|  /  /  /  |");
+        cardGamePlay.get(8).append("| /  /  /  /|");
+        cardGamePlay.get(9).append("\\___________/");
+
+
     }
 
 
-    public void gamePlay() {
+    public void gamePlay(int playerTotal, int dealerTotal, boolean playerwon, boolean itsATie, boolean playerLost) {
 
         for (int i = 0; i < 20; i++) {
             System.out.println();
@@ -219,18 +233,32 @@ public class Printer {
         String smallSpace = "    ";
         int smallIntSpace = 11;
 
-        if (dealer.getTotalDealerValue() > 9) {smallIntSpace = 10; }
-        if (dealer.getTotalPlayerValue() > 9) {  smallSpace = "   "; }
+        if (dealerTotal > 9) {smallIntSpace = 12; }
 
+        if (playerTotal <= 9 && Main.name.length() %  2 == 0) {  smallSpace = "  "; }
+        if (playerTotal <= 9 && Main.name.length() %  2 != 0) {  smallSpace = "   "; }
 
+        if (playerTotal > 9 && Main.name.length() %  2 == 0) {  smallSpace = " "; }
+        if (playerTotal > 9 && Main.name.length() %  2 != 0) {  smallSpace = "  "; }
 
-        gameScreen.add("+-----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+");
-        gameScreen.add("|" + length + namePlusS +  length + lengthFixer + "|" + normalLength + "|" );
-        gameScreen.add("+-----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+");
-        gameScreen.add(" " + normalLength + "|" + normalLength + " ");
-        gameScreen.add(" " + Main.name + "(" + dealer.getTotalPlayerValue() + ")" + length + length  +"    "  + "|" + normalLength.delete(0,smallIntSpace) +  "(" + dealer.getTotalDealerValue() + ")  " + "András ");
-        normalLength.append(" ".repeat(smallIntSpace));
-        gameScreen.add(" " + normalLength + "|" + normalLength + " ");
+        if (!Dealer.playerHasStopped) {
+            gameScreen.add("+-----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+");
+            gameScreen.add("|" + length + namePlusS + length + lengthFixer + "|" + normalLength + "|");
+            gameScreen.add("+-----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+");
+            gameScreen.add(" " + normalLength + "|" + normalLength + " ");
+            gameScreen.add(" " + Main.name + "  (" + playerTotal + ")" + length + length + smallSpace + "|" + normalLength.delete(0, smallIntSpace) + "(" + dealerTotal + ")  " + "András ");
+            normalLength.append(" ".repeat(smallIntSpace));
+            gameScreen.add(" " + normalLength + "|" + normalLength + " ");
+        } else if (Dealer.playerHasStopped) {
+            gameScreen.add("+-----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+");
+            gameScreen.add("|" + normalLength + "|" + length + "András' turn" + length + lengthFixer + "|");
+            gameScreen.add("+-----------------------------------------------------------------------------------------------------------------+-----------------------------------------------------------------------------------------------------------------+");
+            gameScreen.add(" " + normalLength + "|" + normalLength + " ");
+            gameScreen.add(" " + Main.name + "  (" + playerTotal + ")" + length + length + smallSpace + "|" + normalLength.delete(0, smallIntSpace) + "(" + dealerTotal + ")  " + "András ");
+            normalLength.append(" ".repeat(smallIntSpace));
+            gameScreen.add(" " + normalLength + "|" + normalLength + " ");
+        }
+
 
         gameScreen.add(cardGamePlay.get(0).toString() );
         gameScreen.add(cardGamePlay.get(1).toString() );
@@ -243,10 +271,35 @@ public class Printer {
         gameScreen.add(cardGamePlay.get(8).toString() );
         gameScreen.add(cardGamePlay.get(9).toString() );
 
+        gameScreen.add(" " + normalLength + "|" + normalLength + " ");
+        gameScreen.add(" " + normalLength + "|" + normalLength + " ");
+        gameScreen.add(" " + normalLength + "|" + normalLength + " ");
+
+
+        gameScreen.addAll(status);
+
+            gameScreen.add("");
+            gameScreen.add("");
+
+        for (StringBuilder options : options) {
+            gameScreen.add(options.toString());
+        }
+
+        if (!playerwon && !itsATie) {
+            gameScreen.add("");
+            gameScreen.add("");
+        }
+
+            gameScreen.add("");
+
+
+        if (playerLost) {
+            gameScreen.add("");
+        }
+
         for ( String list: gameScreen) {
             System.out.println(list);
         }
-
 
     }
 
@@ -265,37 +318,140 @@ public class Printer {
 
     public void win() {
         congratulations();
-        System.out.println("\nYou won $" + (Main.betSize * 2) + " your new balance is $" + (Main.betSize + Main.currency) + ".");
+        String empty = "|                                                                                |";
+        String space = " ";
+        String middleSpaces = (" ").repeat(73);
+
+        options.add( new StringBuilder(middleSpaces + "+--------------------------------------------------------------------------------+"));
+        options.add(new StringBuilder( middleSpaces + empty));
+        options.add( new StringBuilder( middleSpaces + empty));
+        options.add( new StringBuilder( middleSpaces + "|" + (" ").repeat(15) + "You won! You received double your money back ($" + Main.betSize * 2 + ")." + (" ").repeat(16 - String.valueOf(Main.betSize * 2).length()) + "|"));
+        options.add( new StringBuilder( middleSpaces + "|" + (" ").repeat(28) + "Your new total is: ($" + (Main.currency + Main.betSize * 2) + (")") + (" ").repeat(30 - String.valueOf(Main.currency + Main.betSize * 2).length()) + "|"));
+        options.add( new StringBuilder( middleSpaces + "|  \tTo play again type what you would like to bet or type \" Exit \" to exit \t  |"  ));
+        options.add( new StringBuilder( middleSpaces + empty)) ;
+        options.add( new StringBuilder( middleSpaces + empty));
+        options.add( new StringBuilder( middleSpaces + "+--------------------------------------------------------------------------------+\t\t\t"));
+
+
+
+//        System.out.println("\nYou won $" + (Main.betSize * 2) + " your new balance is $" + (Main.betSize * 2  + Main.currency) + ".");
+        Main.currency += Main.betSize * 2;
+
     }
 
     public void lose() {
-        //sejt statement
-        System.out.println("\nYou lost $" + (Main.betSize) + " your new balance is $" + (Main.currency) + ".");
+
+        youLose();
+
+        String empty = "|                                                                                |";
+        String space = " ";
+        String middleSpaces = (" ").repeat(73);
+
+        options.add( new StringBuilder(middleSpaces + "+--------------------------------------------------------------------------------+"));
+        options.add(new StringBuilder( middleSpaces + empty));
+        options.add( new StringBuilder( middleSpaces + empty));
+        options.add( new StringBuilder( middleSpaces + "|" + (" ").repeat(15) + "You lost! You lost ($" + Main.betSize + ") your new balance is ($" + Main.currency + (")") + (" ").repeat(19 - String.valueOf(Main.currency).length() - String.valueOf(Main.betSize).length()) + ("|")));
+        options.add( new StringBuilder( middleSpaces + empty));
+        options.add( new StringBuilder( middleSpaces + "|  \tTo play again type what you would like to bet or type \" Exit \" to exit \t  |"  ));
+        options.add( new StringBuilder( middleSpaces + empty)) ;
+        options.add( new StringBuilder( middleSpaces + empty));
+        options.add( new StringBuilder( middleSpaces + "+--------------------------------------------------------------------------------+\t\t\t"));
+
+
     }
 
     public void tie() {
-        //sejt statement
-        System.out.println("It was a draw your bet of $" + (Main.betSize) + " has been returned to your wallet and your new balance is $" + (Main.currency + Main.betSize) + ".");
+
+
+        push();
+
+        String empty = "|                                                                                |";
+        String middleSpaces = (" ").repeat(73);
+
+        options.add(new StringBuilder(middleSpaces + "+--------------------------------------------------------------------------------+"));
+        options.add(new StringBuilder(middleSpaces + empty));
+        options.add(new StringBuilder(middleSpaces + empty));
+        options.add(new StringBuilder(middleSpaces + "|        It's a tie you get your bet back ($" + Main.betSize + "), your balance is: ($" + (Main.currency + Main.betSize) + (")") + (" ").repeat(12 - String.valueOf(Main.betSize).length() - String.valueOf(Main.currency).length()) + "|"));
+        options.add(new StringBuilder(middleSpaces + empty));
+        options.add(new StringBuilder(middleSpaces + "|  \tTo play again type what you would like to bet or type \" Exit \" to exit \t  |"  ));
+        options.add(new StringBuilder(middleSpaces + empty)) ;
+        options.add(new StringBuilder(middleSpaces + empty));
+        options.add(new StringBuilder(middleSpaces + "+--------------------------------------------------------------------------------+\t\t\t"));
+
+        Main.currency += Main.betSize;
+
     }
 
-    public void status() {
+    public void status(int bet, int current, boolean canDoubleDown , boolean playerWon ,  boolean itsATie, boolean playerLost) {
+
 
         // Change the bets and currency so they fit with the entire game.
 
-        int bet = 1;
-        int current = 500;
         String empty = "|                                                                                |";
         String space = " ";
 
-        System.out.println("+--------------------------------------------------------------------------------+");
-        System.out.println(empty);
-        System.out.println(empty);
-        System.out.println("|                         Current bet:\t\t\t$" + bet + (space.repeat(32 - String.valueOf(bet).length())) + "|");
-        System.out.println(empty);
-        System.out.println("|                         Total amount:\t\t\t$" + current + (space.repeat(32 - String.valueOf(current).length())) + "|");
-        System.out.println(empty);
-        System.out.println(empty);
-        System.out.println("+--------------------------------------------------------------------------------+");
+        status.add(middleSpaces + "+--------------------------------------------------------------------------------+");
+        status.add(middleSpaces + empty);
+        status.add(middleSpaces + empty);
+        status.add(middleSpaces + "|                         Current bet:\t\t\t$" + bet + (space.repeat(33 - String.valueOf(bet).length())) + "|");
+        status.add(middleSpaces + empty);
+        status.add(middleSpaces + "|                         Balance:\t\t\t\t$" + current + (space.repeat(33 - String.valueOf(current).length())) + "|");
+        status.add(middleSpaces + empty);
+        status.add(middleSpaces + empty);
+        status.add(middleSpaces + "+--------------------------------------------------------------------------------+\n\n\n");
+
+
+
+        options.add(new StringBuilder("\t\t\t\t\t\t+--------------------+  \t\t\t\t\t\t\t  +--------------------+\t\t\t\t\t\t\t"));
+        options.add(new StringBuilder("\t\t\t\t\t\t|                    |  \t\t\t\t\t\t\t  |                    |\t\t\t\t\t\t\t"));
+        options.add(new StringBuilder("\t\t\t\t\t\t|         1          |  \t\t\t\t\t\t\t  |         2          |\t\t\t\t\t\t\t"));
+        options.add(new StringBuilder("\t\t\t\t\t\t|                    |  \t\t\t\t\t\t\t  |                    |\t\t\t\t\t\t\t"));
+        options.add(new StringBuilder("\t\t\t\t\t\t|        HIT         |  \t\t\t\t\t\t\t  |       STAND        |\t\t\t\t\t\t\t"));
+        options.add(new StringBuilder("\t\t\t\t\t\t|                    |  \t\t\t\t\t\t\t  |                    |\t\t\t\t\t\t\t"));
+        options.add(new StringBuilder("\t\t\t\t\t\t+--------------------+  \t\t\t\t\t\t\t  +--------------------+\t\t\t\t\t\t\t"));
+
+
+        if (canDoubleDown) {
+
+            options.get(0).append("+--------------------+");
+            options.get(1).append("|                    |");
+            options.get(2).append("|         3          |");
+            options.get(3).append("|                    |");
+            options.get(4).append("|    DOUBLE DOWN     |");
+            options.get(5).append("|                    |");
+            options.get(6).append("+--------------------+");
+
+
+        }
+
+
+        if (playerWon) {
+
+            status.clear();
+            options.clear();
+
+            win();
+
+        }
+
+        if (itsATie) {
+
+            status.clear();
+            options.clear();
+
+            tie();
+        }
+
+        if (playerLost) {
+
+            status.clear();
+
+            options.clear();
+
+            lose();
+        }
+
+
     }
 
 }
