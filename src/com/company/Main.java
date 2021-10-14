@@ -13,11 +13,11 @@ public class Main {
 
     public static int currency = 500;
     public static int betSize;
+    public static  boolean gameIsRunning = true;
+
 
 
     public static void main(String[] arg) {
-
-        name = "Marc";
 
         Printer print = new Printer();
         Scanner in = new Scanner(System.in);
@@ -25,7 +25,8 @@ public class Main {
         Wallet wallet = new Wallet();
 
 
-
+        System.out.println("Welcome to Blackjack! What's your first name?");
+        name = in.nextLine();
 
         print.startGame();
 

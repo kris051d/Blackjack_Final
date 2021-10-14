@@ -304,15 +304,26 @@ public class Printer {
     }
 
     public void gameOver() {
-        System.out.println("  ______    ______   __       __  ________         ______   __     __  ________  _______  ");
-        System.out.println(" /      \\  /      \\ |  \\     /  \\|        \\       /      \\ |  \\   |  \\|        \\|       \\ ");
-        System.out.println("|  $$$$$$\\|  $$$$$$\\| $$\\   /  $$| $$$$$$$$      |  $$$$$$\\| $$   | $$| $$$$$$$$| $$$$$$$\\");
-        System.out.println("| $$ __\\$$| $$__| $$| $$$\\ /  $$$| $$__          | $$  | $$| $$   | $$| $$__    | $$__| $$");
-        System.out.println("| $$|    \\| $$    $$| $$$$\\  $$$$| $$  \\         | $$  | $$ \\$$\\ /  $$| $$  \\   | $$    $$");
-        System.out.println("| $$ \\$$$$| $$$$$$$$| $$\\$$ $$ $$| $$$$$         | $$  | $$  \\$$\\  $$ | $$$$$   | $$$$$$$\\");
-        System.out.println("| $$__| $$| $$  | $$| $$ \\$$$| $$| $$_____       | $$__/ $$   \\$$ $$  | $$_____ | $$  | $$");
-        System.out.println(" \\$$    $$| $$  | $$| $$  \\$ | $$| $$     \\       \\$$    $$    \\$$$   | $$     \\| $$  | $$");
-        System.out.println("  \\$$$$$$  \\$$   \\$$ \\$$      \\$$ \\$$$$$$$$        \\$$$$$$      \\$     \\$$$$$$$$ \\$$   \\$$\n");
+
+        for (int i = 0; i < 30; i++) {
+            System.out.println();
+        }
+
+        System.out.println((" ").repeat(70) + "  ______    ______   __       __  ________         ______   __     __  ________  _______  ");
+        System.out.println((" ").repeat(70) + " /      \\  /      \\ |  \\     /  \\|        \\       /      \\ |  \\   |  \\|        \\|       \\ ");
+        System.out.println((" ").repeat(70) + "| $$ __\\$$| $$__| $$| $$$\\ /  $$$| $$__          | $$  | $$| $$   | $$| $$__    | $$__| $$");
+        System.out.println((" ").repeat(70) + "|  $$$$$$\\|  $$$$$$\\| $$\\   /  $$| $$$$$$$$      |  $$$$$$\\| $$   | $$| $$$$$$$$| $$$$$$$\\");
+        System.out.println((" ").repeat(70) + "| $$|    \\| $$    $$| $$$$\\  $$$$| $$  \\         | $$  | $$ \\$$\\ /  $$| $$  \\   | $$    $$");
+        System.out.println((" ").repeat(70) + "| $$ \\$$$$| $$$$$$$$| $$\\$$ $$ $$| $$$$$         | $$  | $$  \\$$\\  $$ | $$$$$   | $$$$$$$\\");
+        System.out.println((" ").repeat(70) + "| $$__| $$| $$  | $$| $$ \\$$$| $$| $$_____       | $$__/ $$   \\$$ $$  | $$_____ | $$  | $$");
+        System.out.println((" ").repeat(70) + " \\$$    $$| $$  | $$| $$  \\$ | $$| $$     \\       \\$$    $$    \\$$$   | $$     \\| $$  | $$");
+        System.out.println((" ").repeat(70) + "  \\$$$$$$  \\$$   \\$$ \\$$      \\$$ \\$$$$$$$$        \\$$$$$$      \\$     \\$$$$$$$$ \\$$   \\$$\n");
+
+        for (int i = 0; i < 15; i++) {
+            System.out.println();
+        }
+
+
     }
 
 
@@ -382,6 +393,46 @@ public class Printer {
 
     }
 
+    public void push() {
+        status.add((" ").repeat(90) + " _______   __    __   ______   __    __  __ ");
+        status.add((" ").repeat(90) + "|       \\ |  \\  |  \\ /      \\ |  \\  |  \\|  \\");
+        status.add((" ").repeat(90) + "| $$$$$$$\\| $$  | $$|  $$$$$$\\| $$  | $$| $$");
+        status.add((" ").repeat(90) + "| $$__/ $$| $$  | $$| $$___\\$$| $$__| $$| $$");
+        status.add((" ").repeat(90) + "| $$    $$| $$  | $$ \\$$    \\ | $$    $$| $$");
+        status.add((" ").repeat(90) + "| $$$$$$$ | $$  | $$ _\\$$$$$$\\| $$$$$$$$ \\$$");
+        status.add((" ").repeat(90) + "| $$      | $$__/ $$|  \\__| $$| $$  | $$ __ ");
+        status.add((" ").repeat(90) + "| $$       \\$$    $$ \\$$    $$| $$  | $$|  \\");
+        status.add((" ").repeat(90) + " \\$$        \\$$$$$$   \\$$$$$$  \\$$   \\$$ \\$$");
+        status.add("");
+        status.add("");
+        status.add("");
+    }
+
+    public void youLose() {
+        status.add((" ").repeat(76) + " __      __                          __                                __ ");
+        status.add((" ").repeat(76) + "|  \\    /  \\                        |  \\                              |  \\");
+        status.add((" ").repeat(76) + " \\$$\\  /  $$______   __    __       | $$  ______    _______   ______  | $$");
+        status.add((" ").repeat(76) + "  \\$$\\/  $$/      \\ |  \\  |  \\      | $$ /      \\  /       \\ /      \\ | $$");
+        status.add((" ").repeat(76) + "   \\$$  $$|  $$$$$$\\| $$  | $$      | $$|  $$$$$$\\|  $$$$$$$|  $$$$$$\\| $$");
+        status.add((" ").repeat(76) + "    \\$$$$ | $$  | $$| $$  | $$      | $$| $$  | $$ \\$$    \\ | $$    $$ \\$$");
+        status.add((" ").repeat(76) + "    | $$  | $$__/ $$| $$__/ $$      | $$| $$__/ $$ _\\$$$$$$\\| $$$$$$$$ __ ");
+        status.add((" ").repeat(76) + "    | $$   \\$$    $$ \\$$    $$      | $$ \\$$    $$|       $$ \\$$     \\|  \\");
+        status.add((" ").repeat(76) + "     \\$$    \\$$$$$$   \\$$$$$$        \\$$  \\$$$$$$  \\$$$$$$$   \\$$$$$$$ \\$$");
+    }
+
+    public void rules() {
+        System.out.println("The rules are as following: ");
+        System.out.println("You will try to beat the dealer by getting a count as close to 21 as possible, without going over 21. Aces counts as w");
+        System.out.println("Every round you will be able to place a bet. Winning the game will return the your bet double, getting a tie gives you back your bet and losing will make you lose your bet.");
+        System.out.println("You start with 2 cards and the dealer will start with 2 cards, where one of them is hidden.");
+        System.out.println("You have the options to either hit, meaning you want another card, or stand, meaning you don't want another card.");
+        System.out.println("After you have chosen to stand, the dealer will try and beat your count.\n");
+        System.out.println("Double down:");
+        System.out.println("When you start with two cards, you will have the opportunity to chose \"double down\"");
+        System.out.println("If you chooses this, you will only be granted one more card and your bet will be doubled.\n\n\n\n");
+    }
+
+
     public void status(int bet, int current, boolean canDoubleDown , boolean playerWon ,  boolean itsATie, boolean playerLost) {
 
 
@@ -389,6 +440,7 @@ public class Printer {
 
         String empty = "|                                                                                |";
         String space = " ";
+        String middleSpaces = (" ").repeat(73);
 
         status.add(middleSpaces + "+--------------------------------------------------------------------------------+");
         status.add(middleSpaces + empty);
