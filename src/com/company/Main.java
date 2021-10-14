@@ -1,7 +1,11 @@
 package com.company;
 
 
+import com.sun.source.tree.WhileLoopTree;
+
+import java.util.Locale;
 import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
 
 public class Main {
 

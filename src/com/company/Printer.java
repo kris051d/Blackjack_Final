@@ -167,20 +167,7 @@ public class Printer {
             }
         }
 
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
 
     public void blankCard() {
         cardGamePlay.get(0).append( " ___________ ");
@@ -196,7 +183,6 @@ public class Printer {
 
 
     }
-
 
     public void gamePlay(int playerTotal, int dealerTotal, boolean playerwon, boolean itsATie, boolean playerLost) {
 

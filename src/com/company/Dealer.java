@@ -153,11 +153,12 @@ public class Dealer {
                 } else if (input == 3) {
                     System.err.println("You can't double down right now");
                 }
-                if (input == 4 && canSplit) {
+ /*               if (input == 4 && canSplit) {
                     break;
                 } else if (input == 4) {
                     System.err.println("You don't have the cards needed to split");
                 }
+ */
                 System.err.println("That's not a valid number");
                 }
 
@@ -289,7 +290,7 @@ public class Dealer {
 
 
         // dealer values is under 16 and the value of the dealer is smaller than the player
-        while (totalDealerValue < 17 && totalDealerValue < totalPlayerValue) {
+        while (totalDealerValue < 17 && totalDealerValue <= totalPlayerValue || totalPlayerValue < 17 && player.size() == 5) {
 
             dealer.add(deck.deck.get(0));
             deck.deck.remove(0);
