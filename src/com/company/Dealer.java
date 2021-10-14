@@ -172,7 +172,7 @@ public class Dealer {
 
                     checkPoints();
 
-                    if (totalPlayerValue == 21 || player.size() == 5 ) {
+                    if (totalPlayerValue == 21 && totalDealerValue > 16 || player.size() == 5 && totalPlayerValue <= 21 ) {
 
                         break;
 
@@ -254,22 +254,29 @@ public class Dealer {
                 playerHasStopped = true;
                 dealerDraw();
             }
+            else if (totalPlayerValue == 21 && totalDealerValue > 16 && totalDealerValue != 21) {
+                playerWon = true;
+                gameOver = true;
+            }
             else   if (totalPlayerValue < totalDealerValue && totalDealerValue > 16 && player.size() != 5) {
                 playerLost = true;
                  gameOver = true;
             }
             else  if (player.size() == 5 && totalDealerValue > 16 && totalDealerValue != 21) {
                 playerWon = true;
-                 gameOver = true;
+                gameOver = true;
+                updateUI();
             }
             else  if (player.size() == 5 && totalDealerValue == 21) {
                 playerLost = true;
                 gameOver = true;
+                updateUI();
             }
             else if (player.size() == 5 && !playerHasStopped ) {
                 playerHasStopped = true;
                 dealerDraw();
             }
+
         }
 
     }
@@ -290,7 +297,7 @@ public class Dealer {
 
 
         // dealer values is under 16 and the value of the dealer is smaller than the player
-        while (totalDealerValue < 17 && totalDealerValue <= totalPlayerValue || totalPlayerValue < 17 && player.size() == 5) {
+        while (totalDealerValue < 17 && totalDealerValue <= totalPlayerValue || totalDealerValue < 17 && player.size() == 5) {
 
             dealer.add(deck.deck.get(0));
             deck.deck.remove(0);
